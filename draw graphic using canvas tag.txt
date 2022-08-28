@@ -1,0 +1,51 @@
+<---------HTML--------->
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://unpkg.com/mocha/mocha.css" />
+  </head>
+  <body>
+    <canvas
+      id="myCanvas"
+      width="200"
+      height="100"
+      style="border: 1px solid #000000;"
+    >
+      Your browser does not support the HTML canvas tag.
+    </canvas>
+    <div id="mocha"></div>
+    <script src="https://unpkg.com/chai/chai.js"></script>
+    <script src="https://unpkg.com/mocha/mocha.js"></script>
+    <script class="mocha-init">
+      mocha.setup("bdd");
+      mocha.checkLeaks();
+    </script>
+    <script src="src/index.js"></script>
+  </body>
+</html>
+
+
+
+<--------js-------->
+
+
+const { chai, mocha } = window;
+const { assert } = chai;
+const canvas1 = document.querySelector("canvas");
+it("draw graphic using canvas tag in web page ", async () => {
+  console.log(canvas1, getComputedStyle(canvas1));
+  assert.exists(canvas1);
+});
+
+mocha.run();
+
+
+
+<--------css-------->
+body {
+  font-family: sans-serif;
+}

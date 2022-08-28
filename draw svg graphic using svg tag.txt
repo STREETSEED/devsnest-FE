@@ -1,0 +1,51 @@
+<--------html-------->
+
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://unpkg.com/mocha/mocha.css" />
+  </head>
+  <body>
+    <svg width="100" height="100">
+      <circle
+        cx="50"
+        cy="50"
+        r="40"
+        stroke="green"
+        stroke-width="4"
+        fill="yellow"
+      />
+      Sorry, your browser does not support inline SVG.
+    </svg>
+    <div id="mocha"></div>
+    <script src="https://unpkg.com/chai/chai.js"></script>
+    <script src="https://unpkg.com/mocha/mocha.js"></script>
+    <script class="mocha-init">
+      mocha.setup("bdd");
+      mocha.checkLeaks();
+    </script>
+    <script src="src/index.js"></script>
+  </body>
+</html>
+
+
+
+<----------js----------->
+
+
+const { chai, mocha } = window;
+const { assert } = chai;
+const svg1 = document.querySelector("svg");
+it("draw svg graphic using svg tag in web page ", async () => {
+  console.log(svg1, getComputedStyle(svg1));
+  assert.exists(svg1);
+});
+
+mocha.run();
+
+
+

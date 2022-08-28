@@ -1,0 +1,43 @@
+<-----------html-------------->
+
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://unpkg.com/mocha/mocha.css" />
+  </head>
+  <body>
+    <audio controls>
+      <source src="horse.ogg" type="audio/ogg" />
+      <source src="horse.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+
+    <div id="mocha"></div>
+    <script src="https://unpkg.com/chai/chai.js"></script>
+    <script src="https://unpkg.com/mocha/mocha.js"></script>
+    <script class="mocha-init">
+      mocha.setup("bdd");
+      mocha.checkLeaks();
+    </script>
+    <script src="src/index.js"></script>
+  </body>
+</html>
+
+
+
+<----------js---------->
+
+
+const { chai, mocha } = window;
+const { assert } = chai;
+const audio1 = document.querySelector("audio");
+it("play an audio in web page using audio tag", async () => {
+  console.log(audio1, getComputedStyle(audio1));
+  assert.exists(audio1);
+});
+
+mocha.run();
